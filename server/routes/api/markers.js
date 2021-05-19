@@ -9,7 +9,6 @@ router.get('/', async (req, res) => {
     res.send(await posts.find({}).toArray());
 });
 
-//add marker
 router.post('/', async(req, res) => {
     const posts = await loadMarkers();
     await posts.insertOne({
@@ -31,6 +30,11 @@ router.delete('/:id', async (req, res) => {
     res.status(200).send();
 });
 
+/**
+ * @description gets a list of markers from the database
+ * 
+ * @returns {{coords: object, imageUrl: string, desc: string, event: string, createdAt: Date object}[]} - collection of markers
+ */
 //loads markers from mongoDB
 //returns collection
 async function loadMarkers() {
