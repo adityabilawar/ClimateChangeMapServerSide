@@ -41,7 +41,7 @@ async function loadMarkers() {
         }
     );
 
-    return client.db('vue-express-test').collection('posts');
+    return client.db('climate-change-map').collection('posts');
 }
 
 module.exports = router;
