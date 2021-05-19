@@ -3,13 +3,13 @@ const mongodb = require('mongodb');
 
 const router = express.Router();
 
-// Get Posts
+//get markers
 router.get('/', async (req, res) => {
     const posts = await loadMarkers();
     res.send(await posts.find({}).toArray());
 });
 
-// Add Post
+//add marker
 router.post('/', async(req, res) => {
     const posts = await loadMarkers();
     await posts.insertOne({
@@ -19,14 +19,15 @@ router.post('/', async(req, res) => {
         event: req.body.event,        
         createdAt: new Date()
     });
-
+    //success status
     res.status(201).send();
 })
 
-// Delete Post
+//delete marker
 router.delete('/:id', async (req, res) => {
     const posts = await loadMarkers();
-    await posts.deleteOne({_id: new mongodb.ObjectID(req.params.id)})
+    await posts.deleteOne({_id: new mongodb.ObjectID(req.params.id)});
+    //ok status
     res.status(200).send();
 });
 
