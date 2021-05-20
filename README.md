@@ -12,7 +12,7 @@ provide following:
 {
      {
         coords: object, 
-        imageUrl: string, 
+        imageURL: string, 
         desc: string, 
         event: string, 
         createdAt: Date object}
