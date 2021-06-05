@@ -10,14 +10,11 @@ npm install
 provide following:
 ```
 {
-     {
-        coords: object, 
-        imageURL: string, 
-        desc: string, 
-        event: string, 
-        createdAt: Date object}
-     }
-
+    coords: object, 
+    imageURL: string, 
+    desc: string, 
+    event: string, 
+    createdAt: Date object}
 }
 ```
 ### GET
