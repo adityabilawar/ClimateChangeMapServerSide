@@ -14,7 +14,6 @@ provide following:
     imageURL: string, 
     desc: string, 
     event: string, 
-    createdAt: Date object}
 }
 ```
 ### GET
@@ -25,7 +24,15 @@ returns array of objects:
     imageUrl: string, 
     desc: string, 
     event: string, 
-    createdAt: Date object}
+    createdAt: Date object
+}
+```
+
+#### Coords object:
+```
+{
+    longitude: number,
+    latitude: number
 }
 ```
 
