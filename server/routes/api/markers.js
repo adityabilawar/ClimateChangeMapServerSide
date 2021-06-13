@@ -12,7 +12,7 @@ router.get('/', async (req, res) => {
 router.post('/', async(req, res) => {
     const posts = await loadMarkers();
     await posts.insertOne({
-        coords: req.body.coords, 
+       coords: req.body.coords, 
         LocationName: req.body.LocationName,   
         event: req.body.event,          
         desc: req.body.desc,        
