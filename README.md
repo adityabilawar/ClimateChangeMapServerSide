@@ -31,8 +31,8 @@ returns array of objects:
 #### Coords object:
 ```
 {
-    longitude: number,
-    latitude: number
+   lat: number,
+   lng: number
 }
 ```
 
