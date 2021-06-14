@@ -14,7 +14,7 @@ router.post('/', async(req, res) => {
     await posts.insertOne({
        coords: req.body.coords, 
         LocationName: req.body.LocationName,   
-        event: req.body.event,          
+        eventType: req.body.event,          
         desc: req.body.desc,        
         imageURL: req.body.imageURL,   
         iconImage:req.body.iconImage,
