@@ -19,7 +19,7 @@ router.post('/', async(req, res) => {
         content: req.body.desc,        
         imageURL: req.body.imageURL,   
         iconImage:req.body.iconImage,
-        Date: req.body.DateOfEvent,
+        Year: req.body.DateOfEvent,
         createdAt: new Date()
     });
     //success status
