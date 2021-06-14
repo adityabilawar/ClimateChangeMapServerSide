@@ -12,12 +12,14 @@ router.get('/', async (req, res) => {
 router.post('/', async(req, res) => {
     const posts = await loadMarkers();
     await posts.insertOne({
+        Username: req.body.Username1,
        coords: req.body.coords, 
         LocationName: req.body.LocationName,   
         eventType: req.body.event,          
         content: req.body.desc,        
         imageURL: req.body.imageURL,   
         iconImage:req.body.iconImage,
+        Year: req.body.DateOfEvent,
         createdAt: new Date()
     });
     //success status
