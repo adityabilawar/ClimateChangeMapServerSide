@@ -15,7 +15,7 @@ router.post('/', async(req, res) => {
        coords: req.body.coords, 
         LocationName: req.body.LocationName,   
         eventType: req.body.event,          
-        desc: req.body.desc,        
+        content: req.body.desc,        
         imageURL: req.body.imageURL,   
         iconImage:req.body.iconImage,
         createdAt: new Date()
