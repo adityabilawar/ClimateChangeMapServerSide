@@ -2,13 +2,13 @@
 
 const fastcsv = require("fast-csv");
 const fs = require("fs");
-const ws = fs.createWriteStream("bezkoder_mongodb_fastcsv.csv");
+const ws = fs.createWriteStream("data.csv");
 
 export default function createCSV(data) {
     fastcsv
         .write(data, { headers: true })
         .on("finish", function () {
-            console.log("Write to bezkoder_mongodb_fastcsv.csv successfully!");
+            console.log("Successful write to data.csv");
         })
         .pipe(ws);
 }
