@@ -1,8 +1,6 @@
 const express = require('express');
 const cors = require('cors');
 
-const download = require('./routes/api/export');
-
 const app = express();
 
 //Middleware
@@ -10,8 +8,9 @@ app.use(express.json());
 app.use(cors());
 
 const markers = require('./routes/api/markers');
-
+const download = require('./routes/api/export');
 app.use('/api/markers', markers);
+app.use('/api/download', download);
 
 //handle production
 if (process.env.NODE_ENV === 'production') {
