@@ -2,9 +2,9 @@
 
 const fastcsv = require("fast-csv");
 const fs = require("fs");
-const ws = fs.createWriteStream("data.csv");
+const ws = fs.createWriteStream("./server/data/data.csv");
 
-export default function createCSV(data) {
+function createCSV(data) {
     fastcsv
         .write(data, { headers: true })
         .on("finish", function () {
@@ -12,3 +12,5 @@ export default function createCSV(data) {
         })
         .pipe(ws);
 }
+
+module.exports = createCSV;
