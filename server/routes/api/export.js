@@ -3,24 +3,26 @@ const express = require('express');
 
 const fastcsv = require("fast-csv");
 const fs = require("fs");
-const ws = fs.createWriteStream("./server/data/data.csv");
+const filePath = `${__dirname}/data/data.csv`;
+const ws = fs.createWriteStream(filePath);
 
 const router = express.Router();
 
 //get markers
-router.get('/', async (req, res) => {
+router.get('/data', async (req, res) => {
     const posts = await createCSV();
-    res.send();
+    res.download(filePath);
 });
 
-
 function createCSV(data) {
+    const promise = new Promise();
     fastcsv
         .write(data, { headers: true })
         .on("finish", function () {
-            console.log("Successful write to data.csv");
+            promise.resolve();
         })
         .pipe(ws);
+    return promise;
 }
 
 module.exports = createCSV;
