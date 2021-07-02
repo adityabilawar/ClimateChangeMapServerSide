@@ -1,29 +1,46 @@
-//exporting: https://bezkoder.com/node-js-export-mongodb-csv-file/
+//exporting: https://bezkoder.cyom/node-js-export-mongodb-csv-file/
 const express = require('express');
-const fastcsv = require("fast-csv");
-const fs = require("fs");
+const fastcsv = require('fast-csv');
+const fs = require('fs');
 const path = require('path');
+
+const markers = require('./markers');
 
 const filePath = path.resolve(`${__dirname}/../../data/data.csv`);
 const ws = fs.createWriteStream(filePath);
 
 const router = express.Router();
 
+console.log('HELLO');
+
 //get markers
-router.get('/data', async (req, res) => {
-    const posts = await createCSV();
+router.get('/', async (req, res) => {
+    console.log("NOTICE ME SENPAI");
+    const result = markers.loadMarkers();
+    console.log(result);
+    const data = Array.prototype.slice.call(res, 0);
+    console.log(data);
+    console.log('BRUHH');
+    // const file = await createCSV(data);
     res.download(filePath);
 });
 
 function createCSV(data) {
-    const promise = new Promise();
-    fastcsv
-        .write(data, { headers: true })
-        .on("finish", function () {
-            promise.resolve();
-        })
-        .pipe(ws);
-    return promise;
+    return new Promise(resolve => {
+        console.log('hi');
+        try {
+            fastcsv
+                .write(data, { headers: true })
+                .on('finish', function () {
+                    console.log('hi');
+                    resolve();
+                })
+                .pipe(ws);
+        } catch (error) {
+            console.log(error);
+        }
+
+    });
 }
 
-module.exports = createCSV;
+module.exports = router;

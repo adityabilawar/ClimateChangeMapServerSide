@@ -54,3 +54,6 @@ async function loadMarkers() {
 }
 
 module.exports = router;
+module.exports.loadMarkers = loadMarkers;
+
+// console.log(module.exports);
