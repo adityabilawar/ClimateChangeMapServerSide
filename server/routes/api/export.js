@@ -1,9 +1,10 @@
 //exporting: https://bezkoder.com/node-js-export-mongodb-csv-file/
 const express = require('express');
-
 const fastcsv = require("fast-csv");
 const fs = require("fs");
-const filePath = `${__dirname}/data/data.csv`;
+const path = require('path');
+
+const filePath = path.resolve(`${__dirname}/../../data/data.csv`);
 const ws = fs.createWriteStream(filePath);
 
 const router = express.Router();
