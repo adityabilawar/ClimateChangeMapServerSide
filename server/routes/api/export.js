@@ -37,6 +37,7 @@ router.get('/', async (req, res) => {
 function createCSV(data) {
     return new Promise(resolve => {
         console.log('Creating file');
+        console.log(`data: ${data}`);
         try {
             fastcsv
                 .write(data, { headers: true })
