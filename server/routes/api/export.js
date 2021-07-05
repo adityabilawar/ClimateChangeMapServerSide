@@ -15,24 +15,23 @@ console.log('HELLO');
 
 //get markers
 router.get('/', async (req, res) => {
-    console.log("NOTICE ME SENPAI");
-    const result = markers.loadMarkers();
+    console.log('getting markers');
+    const result = await markers.loadMarkers();
     console.log(result);
     const data = Array.prototype.slice.call(res, 0);
-    console.log(data);
-    console.log('BRUHH');
-    // const file = await createCSV(data);
+    // console.log(data);
+    await createCSV(data);
     res.download(filePath);
 });
 
 function createCSV(data) {
     return new Promise(resolve => {
-        console.log('hi');
+        console.log('Creating file');
         try {
             fastcsv
                 .write(data, { headers: true })
                 .on('finish', function () {
-                    console.log('hi');
+                    console.log('Finished creating file');
                     resolve();
                 })
                 .pipe(ws);
