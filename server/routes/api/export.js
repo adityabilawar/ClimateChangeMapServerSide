@@ -26,18 +26,32 @@ console.log('HELLO');
 router.get('/', async (req, res) => {
     console.log('getting markers');
     const result = await markers.loadMarkers();
-    console.log(result);
-    await createCSV(parsed);
+    await createCSV(result);
     res.download(filePath);
 });
 
 function createCSV(data) {
     return new Promise(resolve => {
         console.log('Creating file');
-        console.log(`data: ${data}`);
+        console.log(data);
         try {
             fastcsv
-                .write(data, { headers: true })
+                .write(data, {
+                    headers: true,
+                    transform: (row) => {
+                        // console.log(row);
+                        const trans = {
+                            Name: row.Username,
+                            Location: `(${row.coords.lat}, ${row.coords.lng})`,
+                            LocationName: `${row.LocationName}`,
+                            Type: `${row.EventType}`,
+                            Content: `${row.content}`,
+                            Date: row.createdAt
+                        }
+                        console.log(trans);
+                        return trans;
+                    }
+                })
                 .on('finish', function () {
                     console.log('Finished creating file');
                     resolve();
