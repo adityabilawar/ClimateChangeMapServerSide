@@ -41,13 +41,12 @@ function createCSV(data) {
                     transform: (row) => {
                         console.log(row);
                         const trans = {
-                            Lat: row.coords.lat,
-                            Long: row.coords.lng,
                             LocationName: row.LocationName,
-                            Type: row.eventType,
-                            Content: row.content,
-                            Year: row.Year,
-                            Date: row.createdAt
+                            Type_Of_Event: row.eventType,
+                            Latitude: row.coords.lat,
+                            Longitude: row.coords.lng,
+                            About: row.content,
+                            Year: row.Year
                         }
                         console.log(trans);
                         return trans;
