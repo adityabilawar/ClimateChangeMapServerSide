@@ -18,9 +18,10 @@ router.get('/', async (req, res) => {
     console.log('getting markers');
     const result = await markers.loadMarkers();
     console.log(result);
-    const data = Array.prototype.slice.call(res, 0);
-    // console.log(data);
-    await createCSV(data);
+    const parsed = result.map(marker => ({
+        ...marker,
+    }))
+    await createCSV(parsed);
     res.download(filePath);
 });
 
