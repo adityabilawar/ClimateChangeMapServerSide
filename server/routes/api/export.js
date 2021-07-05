@@ -43,9 +43,10 @@ function createCSV(data) {
                         const trans = {
                             Lat: row.coords.lat,
                             Long: row.coords.lng,
-                            LocationName: `${row.LocationName}`,
-                            Type: `${row.eventType}`,
-                            Content: `${row.content}`,
+                            LocationName: row.LocationName,
+                            Type: row.eventType,
+                            Content: row.content,
+                            Year: row.Year,
                             Date: row.createdAt
                         }
                         console.log(trans);
