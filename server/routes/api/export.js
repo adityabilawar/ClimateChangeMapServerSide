@@ -6,17 +6,16 @@ const path = require('path');
 
 const markers = require('./markers');
 
-const folderName = 'c:/Users/Aditya/Documents/ClimateChangeMapServerSide/server/data'
+const filePath = path.resolve(`${__dirname}/../../data/data.csv`);
 
 try {
-  if (!fs.existsSync(folderName)) {
-    fs.mkdirSync(folderName)
-  }
+    if (!fs.existsSync(filePath)) {
+        fs.mkdirSync(filePath)
+    }
 } catch (err) {
-  console.error(err)
+    console.error(err)
 }
 
-const filePath = path.resolve(`${__dirname}/../../data/data.csv`);
 const ws = fs.createWriteStream(filePath);
 
 const router = express.Router();
