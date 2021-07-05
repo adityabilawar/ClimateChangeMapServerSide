@@ -39,12 +39,12 @@ function createCSV(data) {
                 .write(data, {
                     headers: true,
                     transform: (row) => {
-                        // console.log(row);
+                        console.log(row);
                         const trans = {
-                            Name: row.Username,
-                            Location: `(${row.coords.lat}, ${row.coords.lng})`,
+                            Lat: row.coords.lat,
+                            Long: row.coords.lng,
                             LocationName: `${row.LocationName}`,
-                            Type: `${row.EventType}`,
+                            Type: `${row.eventType}`,
                             Content: `${row.content}`,
                             Date: row.createdAt
                         }
