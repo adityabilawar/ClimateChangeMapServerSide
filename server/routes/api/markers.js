@@ -9,16 +9,16 @@ router.get('/', async (req, res) => {
     res.send(posts);
 });
 
-router.post('/', async(req, res) => {
+router.post('/', async (req, res) => {
     const posts = await loadMarkers();
     await posts.insertOne({
         Username: req.body.Username1,
-       coords: req.body.coords, 
-        LocationName: req.body.LocationName,   
-        eventType: req.body.event,          
-        content: req.body.desc,        
-        imageURL: req.body.imageURL,   
-        iconImage:req.body.iconImage,
+        coords: req.body.coords,
+        LocationName: req.body.LocationName,
+        eventType: req.body.event,
+        content: req.body.desc,
+        imageURL: req.body.imageURL,
+        iconImage: req.body.iconImage,
         Year: req.body.DateOfEvent,
         createdAt: new Date()
     });
@@ -29,7 +29,7 @@ router.post('/', async(req, res) => {
 //delete marker
 router.delete('/:id', async (req, res) => {
     const posts = await loadMarkers();
-    await posts.deleteOne({_id: new mongodb.ObjectID(req.params.id)});
+    await posts.deleteOne({ _id: new mongodb.ObjectID(req.params.id) });
     //ok status
     res.status(200).send();
 });
