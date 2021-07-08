@@ -43,7 +43,7 @@ router.delete('/:id', async (req, res) => {
 //loads markers from mongoDB
 //returns http://mongodb.github.io/node-mongodb-native/3.6/api/Db.html#collection
 async function getMarkerArray() {
-    const collection = getMarkerCollection();
+    const collection = await getMarkerCollection();
     const arr = collection.find({}).toArray()
     return arr;
 }
