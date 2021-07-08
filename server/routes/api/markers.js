@@ -5,12 +5,12 @@ const router = express.Router();
 
 //get markers
 router.get('/', async (req, res) => {
-    const posts = await loadMarkers();
+    const posts = await getMarkerArray();
     res.send(posts);
 });
 
 router.post('/', async (req, res) => {
-    const posts = await loadMarkers();
+    const posts = await getMarkerCollection();
     await posts.insertOne({
         Username: req.body.Username1,
         coords: req.body.coords,
@@ -29,7 +29,7 @@ router.post('/', async (req, res) => {
 
 //delete marker
 router.delete('/:id', async (req, res) => {
-    const posts = await loadMarkers();
+    const posts = await getMarkerArray();
     await posts.deleteOne({ _id: new mongodb.ObjectID(req.params.id) });
     //ok status
     res.status(200).send();
@@ -42,7 +42,13 @@ router.delete('/:id', async (req, res) => {
  */
 //loads markers from mongoDB
 //returns http://mongodb.github.io/node-mongodb-native/3.6/api/Db.html#collection
-async function loadMarkers() {
+async function getMarkerArray() {
+    const collection = getMarkerCollection();
+    const arr = collection.find({}).toArray()
+    return arr;
+}
+
+async function getMarkerCollection() {
     const client = await mongodb.MongoClient.connect(
         'mongodb+srv://dbUser:qWUXfq7JXi7K6IdH@cluster0.ylmy4.mongodb.net/markers?retryWrites=true&w=majority',
         {
@@ -52,11 +58,8 @@ async function loadMarkers() {
     );
 
     const collection = client.db('climate-change-map').collection('posts');
-    const arr = collection.find({}).toArray()
-    return arr;
+    return collection;
 }
 
 module.exports = router;
-module.exports.loadMarkers = loadMarkers;
-
-// console.log(module.exports);
+module.exports.loadMarkers = getMarkerArray;
