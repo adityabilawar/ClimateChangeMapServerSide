@@ -18,5 +18,8 @@
   },
   "devDependencies": {
     "nodemon": "^2.0.12"
+  },
+  "optionalDependencies": {
+    "fsevents": "2.1.2"
   }
 }
