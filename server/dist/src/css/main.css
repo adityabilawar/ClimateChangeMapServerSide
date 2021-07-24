@@ -1,0 +1,376 @@
+:root {
+    --main-background: hsl(0, 0%, 100%);
+    --main-text-color: #16191d;
+    --accent-hs: 205, 83%;
+    --color: #158ee5;
+    --light-accent-color: hsl(var(--accent-hs), 90%);
+    --accent-color: hsl(var(--accent-hs), 49%);
+    --accent-hover: hsl(var(--accent-hs), 90%);
+    --accent-active: hsl(var(--accent-hs), 80%);
+    --accent-selected: hsl(var(--accent-hs), 75%);
+    --hover: hsla(216, 10%, 80%, 40%);
+    --light-gray: hsl(216, 10%, 90%);
+    --gray: hsl(216, 10%, 80%);
+    --dark-gray: hsl(216, 10%, 40%);
+    --button-color: #5c6470;
+    --shadow: 0 1px 2px 0 hsla(206, 6%, 25%, 0.3), 0 2px 6px 2px hsla(206, 6%, 25%, 0.1);
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --main-background: hsl(213, 5%, 10%);
+        --main-text-color: hsl(0, 0%, 60%);
+        --accent-hs: 205, 33%;
+        --hover: hsla(216, 10%, 30%, 40%);
+        --light-accent-color: hsl(var(--accent-hs), 20%);
+        --accent-color: hsl(var(--accent-hs), 49%);
+        --accent-hover: hsl(var(--accent-hs), 15%);
+        --accent-active: hsl(var(--accent-hs), 20%);
+        --accent-selected: hsl(var(--accent-hs), 25%);
+        --light-gray: hsl(216, 10%, 20%);
+        --gray: hsl(216, 10%, 25%);
+        --dark-gray: hsl(216, 10%, 45%);
+        --button-color: #5c6470;
+        --shadow: 0 1px 2px 0 hsla(206, 6%, 55%, 0.3), 0 2px 6px 2px hsla(206, 6%, 55%, 0.1);
+    }
+}
+
+body {
+    background: var(--main-background);
+    color: var(--main-text-color);
+    font-family: 'Roboto', sans-serif;
+    padding: 0;
+    margin: 0;
+    user-select: none;
+}
+header {
+    padding: 20px;
+    font-size: 30px;
+}
+.footer{
+    text-align: center;
+}
+.topnav {
+    overflow: hidden;
+    background-color: #333;
+  }
+  
+  .topnav a {
+    float: right;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+  }
+  
+  .topnav a:hover {
+    background-color: #ddd;
+    color: black;
+  }
+  
+  .topnav a.active {
+    background-color: #00d07f;
+    color: white;
+  }
+  #lab_social_icon_footer {
+    padding: 40px 0;
+    background-color: #dedede;
+  }
+  
+  #lab_social_icon_footer a {
+    color: #333;
+  }
+  
+  #lab_social_icon_footer .social:hover {
+    -webkit-transform: scale(1.1);
+    -moz-transform: scale(1.1);
+    -o-transform: scale(1.1);
+  }
+  
+  #lab_social_icon_footer .social {
+    -webkit-transform: scale(0.8);
+    /* Browser Variations: */
+    
+    -moz-transform: scale(0.8);
+    -o-transform: scale(0.8);
+    -webkit-transition-duration: 0.5s;
+    -moz-transition-duration: 0.5s;
+    -o-transition-duration: 0.5s;
+  }
+  /*
+      Multicoloured Hover Variations
+  */
+  
+  #lab_social_icon_footer #social-fb:hover {
+    color: #00d07f;
+  }
+  
+  #lab_social_icon_footer #social-tw:hover {
+    color: #00d07f;
+  }
+  
+  #lab_social_icon_footer #social-gp:hover {
+    color: #d34836;
+  }
+  
+  #lab_social_icon_footer #social-em:hover {
+    color: #f39c12;
+  }
+a {
+    color: var(--accent-color);
+}
+
+a:visited {
+    color: var(--accent-color);
+}
+
+button {
+    background: var(--light-gray);
+    border: transparent solid 2px;
+    outline: none;
+    color: var(--button-color);
+    cursor: pointer;
+    border-radius: 8px;
+    margin-right: 20px;
+    padding: 10px;
+}
+
+button:hover, .session-title:hover {
+    background: var(--hover);
+}
+
+button:active {
+    background: var(--gray);
+}
+
+button:focus {
+    border: var(--light-gray) solid 2px;
+}
+
+.modal {
+    border-radius: 10px;
+}
+
+button.accent {
+    color: var(--accent-color);
+    box-shadow: var(--shadow);
+    border-radius: 10px;
+}
+
+button.accent:hover {
+    background: var(--accent-hover) !important;
+}
+
+button.accent:active {
+    background: var(--accent-active) !important;
+}
+
+button.accent:active {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+button.accent:focus {
+    border: var(--accent-color) solid 2px !important;
+}
+
+/* modal */
+
+button.close {
+    border-radius: 50px;
+}
+
+button.close img {
+    display: block;
+}
+
+.modal button.close {
+    float: right;
+    padding: 8px;
+    height: 30px;
+    width: 30px;
+}
+
+.modal button.close img {
+    height: 10px;
+    width: 10px;
+}
+
+.modal {
+    z-index: 2;
+    position: fixed;
+    left: 50%;
+    top: 20%;
+    width: 300px;
+    padding: 10px;
+    margin-left: -160px;
+    box-shadow: var(--shadow);
+    background: var(--main-background);
+    visibility: hidden;
+}
+
+.confirm-modal-container>* {
+    z-index: 2;
+}
+
+.create-modal-container>* {
+    z-index: 2;
+}
+
+.background {
+    z-index: 2;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: hsla(206, 20%, 5%, 0.3);
+    visibility: hidden;
+}
+
+/* confirmation modal */
+
+.modal-button-container {
+    margin: 10px auto 0 auto;
+}
+
+button.no {
+    margin-right: 10px;
+}
+
+button.done-create {
+    padding: 10px 20px 10px 20px;
+}
+
+button.yes, button.no {
+    padding: 10px 5px 10px 5px;
+    float: right;
+    border-radius: 10px;
+}
+
+.message {
+    padding: 10px;
+    font-size: 14px;
+}
+
+.confirm-modal {
+    padding: 10px;
+    width: 200px;
+    margin: -42px 0 0 -111px;
+}
+.contact-form {
+    padding: 20px;
+    margin-bottom: 1rem;
+    background: #00d07f;
+    color: black;
+}
+.contact {
+    width: 800px;
+}
+.actions {
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+.update-modal {
+    margin-top: -150px;
+}
+input[type=text], select, textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    resize: vertical;
+  }
+  
+  input[type=submit] {
+    background-color: #04AA6D;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  input[type=submit]:hover {
+    background-color: #000;
+  }
+.hidden {
+    display: hidden;
+}
+
+/* animations */
+
+/* animation classes */
+
+.fade-out {
+    animation: fade-out 0.1s ease-out;
+}
+
+.fade-in {
+    animation: fade-in 0.1s ease-out;
+}
+
+.zoom-in {
+    animation: zoom-in 0.1s ease-out;
+}
+
+.zoom-out {
+    animation: zoom-out 0.1s ease-out;
+}
+
+.fade-out, .fade-in, .zoom-in, .zoom-out {
+    animation-fill-mode: forwards;
+}
+
+/* anim keyframes */
+
+@keyframes fade-out {
+    from {
+        opacity: 1;
+        visibility: visible;
+    }
+    to {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+        visibility: hidden;
+    }
+    to {
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+@keyframes zoom-out {
+    from {
+        opacity: 1;
+        visibility: visible;
+        transform: scale(1);
+    }
+    to {
+        opacity: 0;
+        visibility: hidden;
+        transform: scale(0.97);
+    }
+}
+
+@keyframes zoom-in {
+    from {
+        opacity: 0;
+        visibility: hidden;
+        transform: scale(0.97);
+    }
+    to {
+        opacity: 1;
+        visibility: visible;
+        transform: scale(1);
+    }
+}
